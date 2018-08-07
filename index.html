@@ -1,16 +1,31 @@
-<!DOCTYPE html ng-app="beachOrNah">
-<html lang="en-us">
+<!DOCTYPE html>
+<html lang="en-us" ng-app="beachOrNah">
+
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta charset="UTF-8">
 	<title> Beach or Nah?</title>
-	
-	
+
+
+
+	<!-- DEV -->
+	<script src="//code.angularjs.org/1.7.2/angular.js"></script>
+
+	<!-- PRODUCTION -->
 	<script src="//code.angularjs.org/1.7.2/angular.min.js"></script>
-    <script src="//code.angularjs.org/1.7.2/angular-route.min.js"></script>
-    <script src="//code.angularjs.org/1.7.2/angular-resource.min.js"></script>
+
+	<script src="//code.angularjs.org/1.7.2/angular-route.min.js"></script>
+	<script src="//code.angularjs.org/1.7.2/angular-resource.min.js"></script>
+	<script src="app.js"></script>
+
 </head>
+
 <body>
+	<div id="toolbar">
+		This is where any toolbar or HTML that will persist multiple pages will live
+	</div>
+	<br>
+	<br>
 	<div class="container">
 		<div ng-view></div>
 	</div>
@@ -19,4 +34,5 @@
 	</div>
 
 </body>
+
 </html>
