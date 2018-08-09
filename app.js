@@ -42,7 +42,13 @@ beachOrNah.controller('forecastController', ['$scope', '$resource', 'placeServic
 
 	$scope.weatherResult = $scope.weatherAPI.get({ q: `${processedPlaceString[0]},${processedPlaceString[2]}`, cnt: 1});
 
-	
+	$scope.convertToFaherenheit = function(degK) {
+		return Math.round(1.8 * (degK - 273) + 32);
+	}
+	$scope.convertToCelsius = function (degK) {
+		return degk - 273;
+	}
+
 }]);
 
 // DIRECTIVES
