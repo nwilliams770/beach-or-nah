@@ -16,6 +16,8 @@ beachOrNah.config(function ($routeProvider) {
 		templateUrl: 'pages/forecast.html',
 		controller: 'forecastController'
 	})
+
+	.otherwise('/')
 })
 
 // SERVICES
@@ -41,13 +43,20 @@ beachOrNah.controller('forecastController', ['$scope', '$resource', 'placeServic
 	$scope.weatherAPI = $resource("http://api.openweathermap.org/data/2.5/forecast?APPID=dfb10e52305b309e27a290c220279d28");
 
 	$scope.weatherResult = $scope.weatherAPI.get({ q: `${processedPlaceString[0]},${processedPlaceString[2]}`, cnt: 1});
-
+	// We want: 
+	//  current temp // min and max (scale of 0 to 122 F)
+	// humidity // scale of 0 to 100
+	// pressure in hPa // scale of 960 to 1060
+	// rain // may not be avail for all // scale of 0 to 5
+	// wind speed // scale of 0 to 50 (current in meters / sec)
+	// wind direction // 0 to 360 //
 	$scope.convertToFaherenheit = function(degK) {
 		return Math.round(1.8 * (degK - 273) + 32);
 	}
 	$scope.convertToCelsius = function (degK) {
 		return degk - 273;
 	}
+
 
 }]);
 
@@ -57,8 +66,10 @@ beachOrNah.directive('googleplace', function () {
 		//binding this 
 		require: 'ngModel',
 		link: function(scope, element, attrs, model) {
+			// current US cities only due to lack of processing country codes for API request
 			let options = {
-				types: ["(cities)"]
+				types: ['(cities)'],
+  				componentRestrictions: {country: "us"}
 			};
 
 			scope.gPlace = new google.maps.places.Autocomplete(element[0], options);
@@ -66,7 +77,6 @@ beachOrNah.directive('googleplace', function () {
 			google.maps.event.addListener(scope.gPlace, 'place_changed', function() {
 				// Explore this part more, why are we using $apply
 
-				// need to do something here to properly handle countries othan than US, need country code
 				let test = scope.gPlace.getPlace();
 
 				scope.$apply(function () {
