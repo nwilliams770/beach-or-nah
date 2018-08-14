@@ -1,0 +1,13 @@
+svg {
+    height: 200px;
+    fill:url(#F1g);
+    transition: fill 2s ease;
+}
+
+stop {
+    -webkit-transition: .4s ease;
+    transition: .4s ease;
+}
+
+
+
