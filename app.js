@@ -1,8 +1,17 @@
-const beachOrNah = angular.module('beachOrNah', ['ngRoute', 'ngResource']);
+const beachOrNah = angular.module('beachOrNah', ['ngRoute', 'ngResource', 'ngSanitize']);
 
+// SANITIZE RESOURCE 
+beachOrNah.config(['$sceDelegateProvider', function($sceDelegateProvider) {
 
-
-
+	$sceDelegateProvider.resourceUrlWhitelist([
+	
+	'self',
+	
+	'http://api.openweathermap.org/data/2.5/forecast?APPID=dfb10e52305b309e27a290c220279d28'
+	
+	]);
+	
+	}]);
 // ROUTES
 beachOrNah.config(function ($routeProvider) {
 	$routeProvider
@@ -37,33 +46,106 @@ beachOrNah.controller('homeController', ['$scope', 'placeService', function($sco
 
 }]);
 
-beachOrNah.controller('forecastController', ['$scope', '$resource', '$log', '$promise', 'placeService', function($scope, $resource, $log, $promise, placeService) {
+
+// TODO: If user refreshes, either cache chosen place or send them back to home
+beachOrNah.controller('forecastController', ['$scope', '$resource', '$log', 'placeService', function($scope, $resource, $log, placeService) {
+	// API Call to Open Weather
 	$scope.chosenPlace = placeService.place;
 	let processedPlaceString = $scope.chosenPlace.split(", ");
-	$scope.weatherAPI = $resource("http://api.openweathermap.org/data/2.5/forecast?APPID=dfb10e52305b309e27a290c220279d28");
+	$scope.weatherAPI = $resource("http://api.openweathermap.org/data/2.5/forecast?APPID=dfb10e52305b309e27a290c220279d28", {get: { method: "JSONP"}});
+	$scope.weatherAPI.get({ q: `${processedPlaceString[0]},${processedPlaceString[2]}`, cnt: 1})
+	.$promise.then(function (result) {
+		$scope.weatherResultRaw = result.list[0];
+		$scope.weatherResultFiltered = []
 
-	// $scope.weatherResult = $scope.weatherAPI.get({ q: `${processedPlaceString[0]},${processedPlaceString[2]}`, cnt: 1});
-	$scope.weatherAPI.get({ q: `${processedPlaceString[0]},${processedPlaceString[2]}`, cnt: 1}).$promise.then(function (data) {
-		$scope.weatherResult = data;
-	})
+		console.log("Weather result -------------")
+		console.log($scope.weatherResultRaw);
 
+		for (key in $scope.weatherResultRaw) {
+			switch (key) {
+				case "dt":
+					$scope.dateRaw = $scope.weatherResultRaw[key];
+					break;
+				case "rain":
+
+					if (Object.keys($scope.weatherResultRaw[key]).length > 0) {
+						$scope.rain = $scope.weatherResultRaw[key]["3h"]
+					}
+					break;
+				case "wind":
+					if (Object.keys($scope.weatherResultRaw[key]).length > 0) {
+						$scope.windSpeed = convertToMph($scope.weatherResultRaw[key].speed);
+						$scope.windDirection = $scope.weatherResultRaw[key].direction;
+					}
+					break;
+				case "main":
+					$scope.temp = convertToFaherenheit($scope.weatherResultRaw[key].temp);
+					$scope.tempMin = convertToFaherenheit($scope.weatherResultRaw[key].temp_min);
+					$scope.tempMax = convertToFaherenheit($scope.weatherResultRaw[key].temp_max);
+					$scope.pressure = $scope.weatherResultRaw[key].pressure;
+					$scope.humidity = $scope.weatherResultRaw[key].humidity;
+					break;
+				default:
+					break;
+			}
+		}
+
+		console.log("Processed Scope -----------------------")
+		console.log($scope);
+		
+	
+		$scope.thermometerFill = thermometerFill($scope.temp);
+		$scope.rainFill = rainFill($scope.rain);
+		$scope.pressureFill = pressureFill($scope.pressure)
+		$scope.windFill = windFill($scope.windSpeed)
+	}).catch(function(err) {
+		if (err) {
+			console.log(`Error: ${err}`)
+			throw err;
+		}
+	});
+	
+	
+	
+	
+
+	
+	
+	// Unit Conversion Functions
+	function convertToFaherenheit(degK) {
+		return Math.round(1.8 * (degK - 273) + 32);
+	}
+	function convertToCelsius(degK) {
+		return Math.round(degk - 273);
+	}
+	function convertToMph(speedMs) {
+		return Math.round((speedMs * 3600) / 1609.3); 
+	}
+	// SVG Display Functions
 	// We want: 
 	//  current temp // min and max (scale of 0 to 122 F)
 	// humidity // scale of 0 to 100
-	// pressure in hPa // scale of 960 to 1060
-	// rain // may not be avail for all // scale of 0 to 5
-	// wind speed // scale of 0 to 50 (current in meters / sec)
+	// pressure in hPa // scale of 900 to 1060
+	// rain // may not be avail for all // scale of 203mm or 8 inches
+	// wind speed // scale of 0 to 50 (current in meters / sec) // SWITCHED to 2 to 66 mph
 	// wind direction // 0 to 360 //
-	$scope.convertToFaherenheit = function(degK) {
-		return Math.round(1.8 * (degK - 273) + 32);
-	}
-	$scope.convertToCelsius = function (degK) {
-		return degk - 273;
+	function thermometerFill (degF) {
+		return Math.round((degF / 122) * 100);
 	}
 
+	function rainFill (rainfallMM) {
+		return Math.round((rainfallMM / 203) * 100)
+	}
+
+	function pressureFill (pressureHpa) {
+		return Math.round((pressureHpa - 900) / 1060 * 100); 
+	}
+
+	function windFill (windMph) {
+		return Math.round((windMph - 2) / 66 * 100);
+	}
 	// $scope.temp = $scope.weatherResult.list[0].dt;
 	// console.log("WEATHER!");
-	$log.log($scope.weatherResult);
 	// $scope.thermoPercentage = $scope.weatherResult
 
 
