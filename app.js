@@ -30,19 +30,23 @@ beachOrNah.controller('homeController', ['$scope', 'placeService', function($sco
 	$scope.gPlace;
 
 	placeService.place = $scope.chosenPlace;
- 
+	
 	$scope.$watch('chosenPlace', function() {
 		placeService.place = $scope.chosenPlace;
 	})
 
 }]);
 
-beachOrNah.controller('forecastController', ['$scope', '$resource', 'placeService', function($scope, $resource, placeService) {
+beachOrNah.controller('forecastController', ['$scope', '$resource', '$log', '$promise', 'placeService', function($scope, $resource, $log, $promise, placeService) {
 	$scope.chosenPlace = placeService.place;
 	let processedPlaceString = $scope.chosenPlace.split(", ");
 	$scope.weatherAPI = $resource("http://api.openweathermap.org/data/2.5/forecast?APPID=dfb10e52305b309e27a290c220279d28");
 
-	$scope.weatherResult = $scope.weatherAPI.get({ q: `${processedPlaceString[0]},${processedPlaceString[2]}`, cnt: 1});
+	// $scope.weatherResult = $scope.weatherAPI.get({ q: `${processedPlaceString[0]},${processedPlaceString[2]}`, cnt: 1});
+	$scope.weatherAPI.get({ q: `${processedPlaceString[0]},${processedPlaceString[2]}`, cnt: 1}).$promise.then(function (data) {
+		$scope.weatherResult = data;
+	})
+
 	// We want: 
 	//  current temp // min and max (scale of 0 to 122 F)
 	// humidity // scale of 0 to 100
@@ -56,6 +60,12 @@ beachOrNah.controller('forecastController', ['$scope', '$resource', 'placeServic
 	$scope.convertToCelsius = function (degK) {
 		return degk - 273;
 	}
+
+	// $scope.temp = $scope.weatherResult.list[0].dt;
+	// console.log("WEATHER!");
+	$log.log($scope.weatherResult);
+	// $scope.thermoPercentage = $scope.weatherResult
+
 
 
 }]);
