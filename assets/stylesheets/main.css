@@ -56,8 +56,6 @@ input[type=submit] {
 
 svg {
   height: 200px;
-  fill: url(#F1g);
-  transition: fill 2s ease;
 }
 
 stop {
@@ -87,6 +85,15 @@ stop {
 .milk-bottle {
   width: 400px;
   height: 400px;
+}
+
+.mask-rect {
+  animation: fill 2s ease-in-out infinite;
+}
+
+#mask {
+  fill: pink;
+  stroke: none;
 }
 
 /*# sourceMappingURL=main.css.map */
