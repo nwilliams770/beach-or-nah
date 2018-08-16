@@ -106,7 +106,11 @@ beachOrNah.controller('forecastController', ['$scope', '$resource', '$log', 'pla
 	});
 	
 	
-	
+	setTimeout(function () {
+		let test = $('#thermo');
+		angular.element(test).removeClass("active");
+		// test.removeClass(".active");
+	}, 3000);
 	
 
 	

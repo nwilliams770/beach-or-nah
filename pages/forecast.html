@@ -1,7 +1,7 @@
 Forecast for {{ chosenPlace }}
-<div ng-show="weatherResult !== null">
+<div ng-show="weatherResultRaw !== undefined">
 
-    {{temp}}
+    current temp is {{temp}}
     <a href="#!/">Go Home</a>
     <!-- SMIL ANIMATION *************** -->
     <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 183.12 624.17">
@@ -23,18 +23,18 @@ Forecast for {{ chosenPlace }}
 
 
 
-    <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 183.12 624.17">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 183.12 624.17">
         <defs>
         <mask id="fill-mask">
-            <rect class="mask-rect" x="300" y="-465" width="215" height="200" transform="rotate(-180 247.5 78.5)" fill="#ffffff" />
+            <rect id="thermo" class="mask-rect no-height active" x="300" y="-465" width="215" ng-attr-height="{{ thermometerFill }}%" transform="rotate(-180 247.5 78.5)" fill="#ffffff" />
         </mask>
         </defs>
-        <! <rect mask="url(#fill-mask)" x="350" y="-200" width="215" height="500" transform="rotate(-180 247.5 78.5)" fill="#FFC107" /> -->
-        <!-- <path mask="url(#fill-mask)" fill="#FFC107" d="M47.61,244.15c0-66-.22-132.06.12-198.09C47.85,23.81,63.47,6.56,84.5,3.51c22.16-3.22,42.93,9.11,48.93,30.21,2.14,7.5,2.09,15.79,2.1,23.72q.16,191.34-.07,382.68c0,9.62,2.07,16,10.47,22.48,41.28,31.85,45.67,92,10.49,130.11a88.26,88.26,0,0,1-129.4.46c-35.35-37.4-31.31-97.86,9.7-130.2,8.66-6.83,11.1-13.45,11-23.73-.4-65-.21-130.06-.21-195.09Z"></path>
+        <rect mask="url(#fill-mask)" x="350" y="-200" width="215" height="500" transform="rotate(-180 247.5 78.5)" fill="#FFC107" />
+        <path mask="url(#fill-mask)" fill="#FFC107" d="M47.61,244.15c0-66-.22-132.06.12-198.09C47.85,23.81,63.47,6.56,84.5,3.51c22.16-3.22,42.93,9.11,48.93,30.21,2.14,7.5,2.09,15.79,2.1,23.72q.16,191.34-.07,382.68c0,9.62,2.07,16,10.47,22.48,41.28,31.85,45.67,92,10.49,130.11a88.26,88.26,0,0,1-129.4.46c-35.35-37.4-31.31-97.86,9.7-130.2,8.66-6.83,11.1-13.45,11-23.73-.4-65-.21-130.06-.21-195.09Z"></path>
         
         <path fill="none" stroke="#0097A7" class="cls-1" d="M47.61,244.15c0-66-.22-132.06.12-198.09C47.85,23.81,63.47,6.56,84.5,3.51c22.16-3.22,42.93,9.11,48.93,30.21,2.14,7.5,2.09,15.79,2.1,23.72q.16,191.34-.07,382.68c0,9.62,2.07,16,10.47,22.48,41.28,31.85,45.67,92,10.49,130.11a88.26,88.26,0,0,1-129.4.46c-35.35-37.4-31.31-97.86,9.7-130.2,8.66-6.83,11.1-13.45,11-23.73-.4-65-.21-130.06-.21-195.09Z" />
 
-    </svg> --> 
+    </svg> 
 
     <!-- <svg class="milk-bottle" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 51">
         <defs>
@@ -61,7 +61,7 @@ Forecast for {{ chosenPlace }}
 
 
 
-<div ng-show="weatherResult === null">
+<div ng-show="weatherResultRaw === undefined">
         <!-- https://loading.io/# -->
     <!-- add spinner from that site -->
     <!-- also you can probably add a note that user refreshed -->
