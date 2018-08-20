@@ -108,7 +108,9 @@ beachOrNah.controller('forecastController', ['$scope', '$resource', '$log', 'pla
 	
 	setTimeout(function () {
 		let test = $('#thermo');
+		let test2 = $('#pressure');
 		angular.element(test).removeClass("active");
+		angular.element(test2).removeClass("active");
 		// test.removeClass(".active");
 	}, 3000);
 	
@@ -138,15 +140,25 @@ beachOrNah.controller('forecastController', ['$scope', '$resource', '$log', 'pla
 	}
 
 	function rainFill (rainfallMM) {
-		return Math.round((rainfallMM / 203) * 100)
+		if (rainfallMM) {
+			return Math.round((rainfallMM / 203) * 100);
+		} else {
+			return 0;
+		}
 	}
 
+	// Scale for gauge attributes is from 0 to 67
+	// First calculate % of fill then return adjusted value
 	function pressureFill (pressureHpa) {
-		return Math.round((pressureHpa - 900) / 1060 * 100); 
+		let unadjustedPercentageFill = Math.round((pressureHpa - 900) / 1060 * 100);
+		return 2 * Math.round((unadjustedPercentageFill * 67) / 100);
 	}
 
 	function windFill (windMph) {
-		return Math.round((windMph - 2) / 66 * 100);
+		let unadjustedPercentageFill = Math.round((windMph - 2) / 66 * 100);
+		console.log(Math.round((unadjustedPercentageFill * 67) / 100));
+		return 2 * Math.round((unadjustedPercentageFill * 67) / 100);
+
 	}
 	// $scope.temp = $scope.weatherResult.list[0].dt;
 	// console.log("WEATHER!");
