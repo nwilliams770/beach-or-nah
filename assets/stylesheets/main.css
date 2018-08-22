@@ -89,4 +89,11 @@ stop {
   stroke: none;
 }
 
+#home-background {
+  background: url("/assets/static/bg.svg") no-repeat;
+  min-height: 700px;
+  max-width: 1366px;
+  position: relative;
+}
+
 /*# sourceMappingURL=main.css.map */

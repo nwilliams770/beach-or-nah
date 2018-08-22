@@ -1,0 +1,7 @@
+#home-background {
+    background: url("/assets/static/bg.svg") no-repeat;
+    //prevents any sort of aspect ratio distortion
+    min-height: 700px;
+    max-width: 1366px;
+    position: relative;
+}
