@@ -89,11 +89,63 @@ stop {
   stroke: none;
 }
 
-#home-background {
-  background: url("/assets/static/bg.svg") no-repeat;
-  min-height: 700px;
-  max-width: 1366px;
+#home-wrapper {
   position: relative;
+  display: flex;
+  min-width: 1244px;
 }
 
-/*# sourceMappingURL=main.css.map */
+#bg-left {
+  background: url("/assets/static/bg-left.svg") no-repeat;
+  min-height: 700px;
+  max-width: 622px;
+  flex-grow: 1;
+  overflow: hidden;
+  position: relative;
+}
+#bg-left img {
+  position: absolute;
+}
+#bg-left .cloud-1 {
+  height: 72px;
+  top: 25px;
+}
+#bg-left .cloud-2 {
+  height: 60px;
+  top: 55px;
+}
+#bg-left .cloud-3 {
+  height: 50px;
+  top: 5px;
+}
+#bg-left .cloud-4 {
+  height: 33px;
+  top: 130px;
+}
+#bg-left .cloud-5 {
+  height: 33px;
+  top: 110px;
+}
+
+#bg-right {
+  background: url("/assets/static/bg-right.svg") no-repeat;
+  min-height: 700px;
+  max-width: 622px;
+  flex-grow: 1;
+  overflow: hidden;
+  position: relative;
+  transform: translateX(-1px);
+}
+
+#form {
+  position: absolute;
+}
+
+@keyframes move {
+  from {
+    -webkit-transform: translateX(-400px);
+  }
+  to {
+    -webkit-transform: translateX(500px);
+  }
+}

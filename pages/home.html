@@ -1,7 +1,31 @@
-Home
-<div>Enter any US beach to get its forecast details</div>
-<div>selection is: {{ chosenPlace }}</div>
-<div><input placeholder="Enter a beach" ng-model="chosenPlace" googleplace/></div>
+<div id="home-wrapper">
+    <div id="bg-left">
+        <img class="cloud-1" src="assets/static/cloud-white.svg" />
+        <img class="cloud-2" src="assets/static/cloud-white.svg" />
+        <img class="cloud-3" src="assets/static/cloud-white.svg" />
+        <img class="cloud-4" src="assets/static/cloud-white.svg" />
+        <img class="cloud-5" src="assets/static/cloud-white.svg" />
 
-    <!-- TODO: Prevent user from linking unless a place is chosen, add message too using ng-show -->
-    <a href="#!/forecast">Get Forecast</a>
+    </div>
+    <div id="bg-right">
+
+    </div>
+    <!-- <div id="background-assets">
+
+
+
+        <img class="cloud-5" src="assets/static/cloud-white.svg" />
+        <img class="cloud-6" src="assets/static/cloud-white.svg" />
+        <img class="cloud-7" src="assets/static/cloud-white.svg" />
+        <img class="cloud-8" src="assets/static/cloud-white.svg" />
+
+    </div> -->
+    <div id="form">
+        <div>Enter any US beach to get its forecast details</div>
+        <div>selection is: {{ chosenPlace }}</div>
+        <div><input placeholder="Enter a beach" ng-model="chosenPlace" googleplace/></div>
+        
+            <!-- TODO: Prevent user from linking unless a place is chosen, add message too using ng-show -->
+            <a href="#!/forecast">Get Forecast</a>
+    </div>
+</div>

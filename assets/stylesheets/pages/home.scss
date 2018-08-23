@@ -1,7 +1,76 @@
-#home-background {
-    background: url("/assets/static/bg.svg") no-repeat;
-    //prevents any sort of aspect ratio distortion
-    min-height: 700px;
-    max-width: 1366px;
+#home-wrapper {
     position: relative;
+    // background: url("/assets/static/bg.svg") no-repeat;
+    // //prevents any sort of aspect ratio distortion
+    // min-height: 700px;
+    display: flex;
+    min-width: 1244px;
 }
+
+#bg-left {
+    background: url("/assets/static/bg-left.svg") no-repeat;
+    min-height: 700px;
+    max-width: 622px;
+    flex-grow: 1;
+    overflow: hidden;
+    position: relative;
+    img {
+        position: absolute;
+    }
+    .cloud-1 {
+        height: 72px;
+        // -webkit-animation: move 10s linear 10s infinite;
+        // -moz-animation: move 35s linear 10s infinite backwards;
+        // -o-animation: move 35s linear 10s infinite backwards;
+        // animation: move 35s linear 10s infinite backwards;
+        top: 25px;
+    }
+    
+    .cloud-2 {
+        height: 60px;
+        top: 55px;
+
+    }
+    
+    .cloud-3 {
+        height: 50px;
+        top: 5px;
+    }
+    
+    .cloud-4 {
+        height: 33px;
+        top: 130px;
+    }
+    .cloud-5 {
+        height: 33px;
+        top: 110px;
+    }
+}
+
+#bg-right {
+    background: url("/assets/static/bg-right.svg") no-repeat;
+    min-height: 700px;
+    max-width: 622px;
+    flex-grow: 1;
+    overflow: hidden;
+    position: relative;
+    // fix seamline between bgs
+    transform: translateX(-1px);
+}
+
+#form {
+    position: absolute
+}
+
+@keyframes move {
+    from {-webkit-transform: translateX(-400px);}
+    to {-webkit-transform: translateX(500px);}
+  }
+
+// .cloud-1 {
+//     -webkit-animation: move 35s linear 10s infinite backwards;
+//     -moz-animation: move 35s linear 10s infinite backwards;
+//     -o-animation: move 35s linear 10s infinite backwards;
+//     animation: move 35s linear 10s infinite backwards;
+// }
+
