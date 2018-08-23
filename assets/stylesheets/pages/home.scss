@@ -140,6 +140,29 @@
     }
 }
 
+#letters {
+    position: absolute;
+    left: 458px;
+    top: 50px;
+    .beach {
+        -webkit-animation: enter-left 0.5s ease-in-out 0.75s backwards;
+        -moz-animation: enter-left 0.5s ease-in-out 0.75s backwards;
+        -o-animation: enter-left 0.5s ease-in-out 0.75s backwards;
+        animation: enter-left 0.5s ease-in-out 0.75s backwards;
+    }
+    .or {
+        -webkit-animation: enter-right 0.5s ease-in-out 1.5s backwards;
+        -moz-animation: enter-right 0.5s ease-in-out 1.5s backwards;
+        -o-animation: enter-right 0.5s ease-in-out 1.5s backwards;
+        animation: enter-right 0.5s ease-in-out 1.5s backwards;
+    }
+    .nah {
+        -webkit-animation: enter-left 0.5s ease-in-out 2.25s backwards;
+        -moz-animation: enter-left 0.5s ease-in-out 2.25s backwards;
+        -o-animation: enter-left 0.5s ease-in-out 2.25s backwards;
+        animation: enter-left 0.5s ease-in-out 2.25s backwards;
+    }
+}
 #form {
     position: absolute
 }
@@ -190,7 +213,24 @@
     }
 }
 
-#letters {
-    position: absolute;
+@keyframes enter-right {
+    from {
+      opacity: 0;
+      transform: translate(200px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+}
 
+@keyframes enter-left {
+    from {
+      opacity: 0;
+      transform: translate(-200px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
 }
