@@ -19,31 +19,46 @@
     }
     .cloud-1 {
         height: 72px;
-        // -webkit-animation: move 10s linear 10s infinite;
-        // -moz-animation: move 35s linear 10s infinite backwards;
-        // -o-animation: move 35s linear 10s infinite backwards;
-        // animation: move 35s linear 10s infinite backwards;
         top: 25px;
+        -webkit-animation: cloud-move 35s linear 2s infinite backwards;
+        -moz-animation: cloud-move 35s linear 2s infinite backwards;
+        -o-animation: cloud-move 35s linear 2s infinite backwards;
+        animation: cloud-move 35s linear 2s infinite backwards;
     }
-    
     .cloud-2 {
         height: 60px;
-        top: 55px;
+        top: 65px;
+        -webkit-animation: cloud-move 45s linear 6s infinite backwards;
+        -moz-animation: cloud-move 45s linear 6s infinite backwards;
+        -o-animation: cloud-move 45s linear 6s infinite backwards;
+        animation: cloud-move 45s linear 6s infinite backwards;
 
     }
     
     .cloud-3 {
         height: 50px;
         top: 5px;
+        -webkit-animation: cloud-move 25s linear infinite backwards;
+        -moz-animation: cloud-move 25s linear infinite backwards;
+        -o-animation: cloud-move 25s linear infinite backwards;
+        animation: cloud-move 25s linear infinite backwards;
     }
     
     .cloud-4 {
         height: 33px;
         top: 130px;
+        -webkit-animation: cloud-move 39s linear infinite backwards;
+        -moz-animation: cloud-move 39s linear infinite backwards;
+        -o-animation: cloud-move 39s linear infinite backwards;
+        animation: cloud-move 39s linear infinite backwards;
     }
     .cloud-5 {
-        height: 33px;
+        height: 23px;
         top: 110px;
+        -webkit-animation: cloud-move 50s linear 8s infinite backwards;
+        -moz-animation: cloud-move 50s linear 8s infinite backwards;
+        -o-animation: cloud-move 50s linear 8s infinite backwards;
+        animation: cloud-move 50s linear 8s infinite backwards;
     }
 }
 
@@ -56,21 +71,126 @@
     position: relative;
     // fix seamline between bgs
     transform: translateX(-1px);
+    img {
+        position: absolute;
+    }
+    .trees {
+        top: 153px;
+        left: 55px;
+        height: 90px;
+        -webkit-animation: tree-blow 4s cubic-bezier(0.23, 0.62, 0.99, 1.62) infinite;
+        -moz-animation: tree-blow 4s cubic-bezier(0.23, 0.62, 0.99, 1.62) infinite;
+        -o-animation: tree-blow 4s cubic-bezier(0.23, 0.62, 0.99, 1.62) infinite;
+        animation: tree-blow 4s cubic-bezier(0.23, 0.62, 0.99, 1.62) infinite;
+    }
+    .cloud-1 {
+        height: 80px;
+        top: 30px;
+        right: 165px;
+    }
+
+    .cloud-2 {
+        height: 68px;
+        top: 100px;
+        left: 110px;
+    }
+
+    .cloud-3 {
+        height: 40px;
+        top: 130px;
+        right: 75px;
+    }
+
+    .cloud-4 {
+        height: 32px;
+        top: 45px
+    }
+
+    .lightning-1 {
+        height: 70px;
+        top: 40px;
+        right: 180px;
+        z-index: -1;
+        -webkit-animation: lightning-strike 6s linear infinite;
+        -moz-animation: lightning-strike 6s linear infinite;
+        -o-animation: lightning-strike 6s linear infinite;
+        animation: lightning-strike 6s linear infinite;
+    }
+
+    .lightning-2 {
+        height: 55px;
+        right: 129px;
+        top: 55px;
+        z-index: -1;
+        -webkit-animation: lightning-strike 6.3s linear infinite;
+        -moz-animation: lightning-strike 6.3s linear infinite;
+        -o-animation: lightning-strike 6.3s linear infinite;
+        animation: lightning-strike 6.3s linear infinite;
+    }
+
+    .lightning-3 {
+        height: 55px;
+        left: 100px;
+        top: 112px;
+        z-index: -1;
+        -webkit-animation: lightning-strike 7s linear infinite;
+        -moz-animation: lightning-strike 7s linear infinite;
+        -o-animation: lightning-strike 7s linear infinite;
+        animation: lightning-strike 7s linear infinite;
+    }
 }
 
 #form {
     position: absolute
 }
 
-@keyframes move {
-    from {-webkit-transform: translateX(-400px);}
-    to {-webkit-transform: translateX(500px);}
+@keyframes cloud-move {
+    from {-webkit-transform: translateX(-375px);}
+    to {-webkit-transform: translateX(375px);}
   }
 
-// .cloud-1 {
-//     -webkit-animation: move 35s linear 10s infinite backwards;
-//     -moz-animation: move 35s linear 10s infinite backwards;
-//     -o-animation: move 35s linear 10s infinite backwards;
-//     animation: move 35s linear 10s infinite backwards;
-// }
+@keyframes tree-blow {
+    0% {
+        -webkit-transform: skewX(0deg);
+    }
+    50% {
+        -webkit-transform: skewX(0deg);
+    }
+    60% {
+        -webkit-transform: skewX(-4deg);
+        transform-origin: 100% 100%;
+    }
+    70% {
+        -webkit-transform: skewX(-14deg);
+        transform-origin: 100% 100%;
+    }
+    80% {
+        -webkit-transform: skewX(-10deg);
+        transform-origin: 100% 100%;
+    }
+    90% {
+        -webkit-transform: skewX(-12deg);
+        transform-origin: 100% 100%;
+    }
+    100% {
+        -webkit-transform: skewX(0deg);
+        transform-origin: 100% 100%;
+    }
+}
 
+@keyframes lightning-strike {
+    85% {
+        -webkit-transform: translateY(0px)
+    }
+    90% {
+        -webkit-transform: translateY(50px)
+    }
+    100% {
+        -webkit-transform: translateY(0);
+    }
+}
+
+#letters {
+    position: absolute;
+
+}
