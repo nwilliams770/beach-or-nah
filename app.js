@@ -156,7 +156,6 @@ beachOrNah.controller('forecastController', ['$scope', '$resource', '$log', 'pla
 
 	function windFill (windMph) {
 		let unadjustedPercentageFill = Math.round((windMph - 2) / 66 * 100);
-		console.log(Math.round((unadjustedPercentageFill * 67) / 100));
 		return 2 * Math.round((unadjustedPercentageFill * 67) / 100);
 
 	}
