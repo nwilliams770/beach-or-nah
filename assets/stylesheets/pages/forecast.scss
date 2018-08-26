@@ -1,4 +1,17 @@
+.a{fill:none;stroke:#fff;stroke-miterlimit:10;stroke-width:6px;}
 
+#wind-direction {
+	transform-origin: center;
+}
+
+#forecast-wrapper {
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+	min-width: 1360px;
+	min-height: 770px;
+	background-color: #45454E;
+}
 svg {
     height: 200px;
 }
