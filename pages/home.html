@@ -22,11 +22,10 @@
         <img class="nah" src="assets/static/nah.svg" />
     </div>
     <div id="form">
-        <div>Enter any US beach to get its forecast details</div>
-        <div>selection is: {{ chosenPlace }}</div>
-        <div><input placeholder="Enter a beach" ng-model="chosenPlace" googleplace/></div>
-        
-            <!-- TODO: Prevent user from linking unless a place is chosen, add message too using ng-show -->
-            <a href="#!/forecast">Get Forecast</a>
+        <p> Welcome to Beach or Nah(?)! Enter a location to get started</p>
+        <input placeholder="Enter a beach" ng-model="chosenPlace" googleplace/>
+        <div ng-show="chosenPlace.length > 0">
+            <a href="#!/forecast">Get Forecast for {{ chosenPlace }} </a>
+        </div>
     </div>
 </div>

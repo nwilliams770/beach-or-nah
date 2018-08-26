@@ -75,7 +75,7 @@ beachOrNah.controller('forecastController', ['$scope', '$resource', '$log', 'pla
 				case "wind":
 					if (Object.keys($scope.weatherResultRaw[key]).length > 0) {
 						$scope.windSpeed = convertToMph($scope.weatherResultRaw[key].speed);
-						$scope.windDirection = $scope.weatherResultRaw[key].direction;
+						$scope.windDirection = $scope.weatherResultRaw[key].deg;
 					}
 					break;
 				case "main":
@@ -98,6 +98,7 @@ beachOrNah.controller('forecastController', ['$scope', '$resource', '$log', 'pla
 		$scope.rainFill = rainFill($scope.rain);
 		$scope.pressureFill = pressureFill($scope.pressure)
 		$scope.windFill = windFill($scope.windSpeed)
+		$scope.humidityFill = humidityFill($scope.humidity);
 	}).catch(function(err) {
 		if (err) {
 			console.log(`Error: ${err}`)
@@ -105,13 +106,19 @@ beachOrNah.controller('forecastController', ['$scope', '$resource', '$log', 'pla
 		}
 	});
 	
-	
+	// 
 	setTimeout(function () {
-		let test = $('#thermo');
-		let test2 = $('#pressure');
-		angular.element(test).removeClass("active");
-		angular.element(test2).removeClass("active");
-		// test.removeClass(".active");
+		let thermo = $('#thermo');
+		let pressure = $('#pressure');
+		let humidity = $('#humidity');
+		let wind = $('#wind');
+		let windDirection = $('#wind-direction');
+
+		// windDirection.css({transform: rotateZ($scope.windDirection)});
+		windDirection.css("-webkit-transform", `rotateZ(${$scope.windDirection}deg)`);
+		angular.element(pressure).removeClass("active");
+		angular.element(humidity).removeClass("active");
+		angular.element(wind).removeClass("active");
 	}, 3000);
 	
 
@@ -131,7 +138,7 @@ beachOrNah.controller('forecastController', ['$scope', '$resource', '$log', 'pla
 	// We want: 
 	//  current temp // min and max (scale of 0 to 122 F)
 	// humidity // scale of 0 to 100
-	// pressure in hPa // scale of 900 to 1060
+	// pressure in hPa // scale of 800 to 1060
 	// rain // may not be avail for all // scale of 203mm or 8 inches
 	// wind speed // scale of 0 to 50 (current in meters / sec) // SWITCHED to 2 to 66 mph
 	// wind direction // 0 to 360 //
@@ -148,16 +155,22 @@ beachOrNah.controller('forecastController', ['$scope', '$resource', '$log', 'pla
 	}
 
 	// Scale for gauge attributes is from 0 to 67
+	function humidityFill (unadjustedHumidity) {
+		return Math.round(unadjustedHumidity * 67 / 100);
+	}
+
+	// Scale for gauge attributes is from 0 to 67
 	// First calculate % of fill then return adjusted value
 	function pressureFill (pressureHpa) {
-		let unadjustedPercentageFill = Math.round((pressureHpa - 900) / 1060 * 100);
+		let unadjustedPercentageFill = Math.round((pressureHpa - 800) / 1060 * 100);
 		return 2 * Math.round((unadjustedPercentageFill * 67) / 100);
 	}
 
 	function windFill (windMph) {
 		let unadjustedPercentageFill = Math.round((windMph - 2) / 66 * 100);
+		console.log("WIND");
+		console.log(2 * Math.round((unadjustedPercentageFill * 67) / 100));
 		return 2 * Math.round((unadjustedPercentageFill * 67) / 100);
-
 	}
 	// $scope.temp = $scope.weatherResult.list[0].dt;
 	// console.log("WEATHER!");

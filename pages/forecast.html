@@ -1,100 +1,136 @@
-Forecast for {{ chosenPlace }}
-<div ng-show="weatherResultRaw !== undefined">
+<div id="forecast-wrapper">
 
-    current temp is {{temp}}
-    <a href="#!/">Go Home</a>
+    <div ng-show="weatherResultRaw !== undefined">
+        Forecast for {{ chosenPlace }}
 
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 183.12 624.17">
-        <defs>
-            <mask id="fill-mask-thermo">
-                <rect id="thermo" class="fill-mask mask-rect no-height active" x="300" y="-465" width="215" ng-attr-height="{{ thermometerFill }}%" transform="rotate(-180 247.5 78.5)" fill="#ffffff" />
-            </mask>
-        </defs>
-        <path class="therometer" fill="none" stroke="#0097A7" d="M47.61,244.15c0-66-.22-132.06.12-198.09C47.85,23.81,63.47,6.56,84.5,3.51c22.16-3.22,42.93,9.11,48.93,30.21,2.14,7.5,2.09,15.79,2.1,23.72q.16,191.34-.07,382.68c0,9.62,2.07,16,10.47,22.48,41.28,31.85,45.67,92,10.49,130.11a88.26,88.26,0,0,1-129.4.46c-35.35-37.4-31.31-97.86,9.7-130.2,8.66-6.83,11.1-13.45,11-23.73-.4-65-.21-130.06-.21-195.09Z" />
-        <path class="fill" mask="url(#fill-mask-thermo)" fill="#FFC107" d="M47.61,244.15c0-66-.22-132.06.12-198.09C47.85,23.81,63.47,6.56,84.5,3.51c22.16-3.22,42.93,9.11,48.93,30.21,2.14,7.5,2.09,15.79,2.1,23.72q.16,191.34-.07,382.68c0,9.62,2.07,16,10.47,22.48,41.28,31.85,45.67,92,10.49,130.11a88.26,88.26,0,0,1-129.4.46c-35.35-37.4-31.31-97.86,9.7-130.2,8.66-6.83,11.1-13.45,11-23.73-.4-65-.21-130.06-.21-195.09Z"></path>
-    </svg>
+        current temp is {{temp}}
+        <a href="#!/">Go Home</a>
 
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 183.12 624.17">
+            <defs>
+                <mask id="fill-mask-thermo">
+                    <rect id="thermo" class="fill-mask mask-rect no-height active" x="300" y="-465" width="215" ng-attr-height="{{ thermometerFill }}%" transform="rotate(-180 247.5 78.5)" fill="#ffffff" />
+                </mask>
+            </defs>
+            <path class="therometer" fill="none" stroke="#0097A7" d="M47.61,244.15c0-66-.22-132.06.12-198.09C47.85,23.81,63.47,6.56,84.5,3.51c22.16-3.22,42.93,9.11,48.93,30.21,2.14,7.5,2.09,15.79,2.1,23.72q.16,191.34-.07,382.68c0,9.62,2.07,16,10.47,22.48,41.28,31.85,45.67,92,10.49,130.11a88.26,88.26,0,0,1-129.4.46c-35.35-37.4-31.31-97.86,9.7-130.2,8.66-6.83,11.1-13.45,11-23.73-.4-65-.21-130.06-.21-195.09Z" />
+            <path class="fill" mask="url(#fill-mask-thermo)" fill="#FFC107" d="M47.61,244.15c0-66-.22-132.06.12-198.09C47.85,23.81,63.47,6.56,84.5,3.51c22.16-3.22,42.93,9.11,48.93,30.21,2.14,7.5,2.09,15.79,2.1,23.72q.16,191.34-.07,382.68c0,9.62,2.07,16,10.47,22.48,41.28,31.85,45.67,92,10.49,130.11a88.26,88.26,0,0,1-129.4.46c-35.35-37.4-31.31-97.86,9.7-130.2,8.66-6.83,11.1-13.45,11-23.73-.4-65-.21-130.06-.21-195.09Z"></path>
+        </svg>
 
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55.01 99.37">
-        <defs>
-            <mask id="fill-mask-rain">
-                <rect id="rain" class="mask-rect no-height" x="440" y="55" width="55" ng-attr-height="{{ rainFill }}" transform="rotate(-180 247.5 78.5)" fill="#ffffff" />
-            </mask>
-        </defs>
-        <path fill="none" stroke="#0097A7" d="M27.51,1.31,52.45,61.53a27,27,0,1,1-49.88,0Z"/>
-        <path mask="url(#fill-mask-rain)" fill="#FFC107" d="M27.51,1.31,52.45,61.53a27,27,0,1,1-49.88,0Z"></path>
-    </svg>
-
-    <!-- <svg class="milk-bottle" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 51">
-        <defs>
-            <mask id="milk-mask">
-                <rect class="mask-rect" x="477" y="108" width="15" height="40" transform="rotate(-180 247.5 78.5)" fill="#ffffff" />
-            </mask>
-        </defs>
-        <path class="bottle" stroke="pink" d="M19 21.1L15 8.74V6a2.3 2.3 0 0 0-.14-.9 1.54 1.54 0 0 0 .14-.65V3c0-.85-.35-1.5-1.19-1.5H7.86C7.02 1.5 6 2.15 6 3v1.47a1.55 1.55 0 0 0 .22.79 1.32 1.32 0 0 0-.22.76v2.72L2 21.09a12.12 12.12 0 0 0-.51 3.21v22.1a3.29 3.29 0 0 0 3.15 3.1h12a2.92 2.92 0 0 0 2.85-3.1V24.3a12.14 12.14 0 0 0-.49-3.2zM7.69 3h5.81v1.47a3.12 3.12 0 0 0 .31.08h-.08l-6-.05zM18 46.4a1.63 1.63 0 0 1-1.4 1.58H4.65C3.93 47.98 3 46.85 3 46.4V24.3a11 11 0 0 1 .61-2.73L7.72 9.1l.08-3a3.72 3.72 0 0 1 .88-.06h4.82v2.79l4.06 12.71a10.67 10.67 0 0 1 .44 2.73z" fill="#fff" />
-        <path class="milk" mask="url(#milk-mask)" d="M4.5 46.5v-23l4-14h4l4 14v23" fill="#000" />
-    </svg> -->
-    <div id="test">
-    <svg viewbox="-2.5 -5 35 35">
-        <!-- THIS WILL BE OUR OUTLINE COLOR -->
-            <path
-            d="M4.73,24.68a14.11,14.11,0,1,1,19.85-.1"
-              fill="none"
-              stroke="pink";
-              stroke-width="3";
-              stroke-dasharray="75, 100";
-              stroke-linecap= "round"
-              tra
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55.01 99.37">
+            <defs>
+                <mask id="fill-mask-rain">
+                    <rect id="rain" class="mask-rect no-height" x="440" y="55" width="55" ng-attr-height="{{ rainFill }}" transform="rotate(-180 247.5 78.5)" fill="#ffffff" />
+                </mask>
+            </defs>
+            <path fill="none" stroke="#0097A7" d="M27.51,1.31,52.45,61.53a27,27,0,1,1-49.88,0Z"/>
+            <path mask="url(#fill-mask-rain)" fill="#FFC107" d="M27.51,1.31,52.45,61.53a27,27,0,1,1-49.88,0Z"></path>
+        </svg>
+        <div id="test">
+            <svg viewbox="-2.5 -5 35 35">
+                <!-- OUTLINE COLOR -->
+                <path
+                d="M4.73,24.68a14.11,14.11,0,1,1,19.85-.1"
+                fill="none"
+                stroke="pink";
+                stroke-width="3";
+                stroke-dasharray="75, 100";
+                stroke-linecap= "round"
+                tra
+                />
+                <!-- BACKGROUND COLOR -->
+                <path
+                d="M4.73,24.68a14.11,14.11,0,1,1,19.85-.1"
+                fill="none"
+                stroke="#45454E";
+                stroke-width="2.8";
+                stroke-dasharray="75, 100";
+                stroke-linecap= "round"
+                />
+                <!-- FILL COLOR -->
+                <path id="pressure" class="empty active"
+                d="M4.73,24.68a14.11,14.11,0,1,1,19.85-.1"
+                fill="none"
+                stroke="blue";
+                stroke-width="2.8";
+                ng-attr-stroke-dasharray="{{ pressureFill }}, 100";
+                stroke-linecap= "round";
             />
-        <!-- THIS WILL BE OUR BACKGROUND COLOR TO GIVE THE ILLUSION OF EMPTINESS -->
-            <path
-            d="M4.73,24.68a14.11,14.11,0,1,1,19.85-.1"
-            fill="none"
-            stroke="white";
-            stroke-width="2.8";
-            stroke-dasharray="75, 100";
-            stroke-linecap= "round"
-          />
-        <!-- THIS WILL BE OUR FILL COLOR -->
+            </svg>
 
-        <path id="pressure" class="empty active"
-        d="M4.73,24.68a14.11,14.11,0,1,1,19.85-.1"
-        fill="none"
-        stroke="blue";
-        stroke-width="2.8";
-        ng-attr-stroke-dasharray="{{ windFill }}, 100";
-        stroke-linecap= "round";
-      />
-            <!-- <path
-            d="M18 2.0845
-              a 15.9155 15.9155 0 0 1 0 31.831
-              a 15.9155 15.9155 0 0 1 0 -31.831"
-            fill="none"
-            stroke="blue";
-            stroke-width="2.8";
-            stroke-dasharray="75, 100";
-            stroke-linecap= "round";
-          /> -->
-    </svg>
+            <svg viewbox="-2.5 -5 35 35">
+                    <!-- OUTLINE COLOR -->
+                    <path
+                    d="M4.73,24.68a14.11,14.11,0,1,1,19.85-.1"
+                    fill="none"
+                    stroke="pink";
+                    stroke-width="3";
+                    stroke-dasharray="75, 100";
+                    stroke-linecap= "round"
+                    tra
+                    />
+                    <!-- BACKGROUND COLOR -->
+                    <path
+                    d="M4.73,24.68a14.11,14.11,0,1,1,19.85-.1"
+                    fill="none"
+                    stroke="#45454E";
+                    stroke-width="2.8";
+                    stroke-dasharray="75, 100";
+                    stroke-linecap= "round"
+                    />
+                    <!-- FILL COLOR -->
+                    <path id="humidity" class="empty active"
+                    d="M4.73,24.68a14.11,14.11,0,1,1,19.85-.1"
+                    fill="none"
+                    stroke="blue";
+                    stroke-width="2.8";
+                    ng-attr-stroke-dasharray="{{ humidityFill }}, 100";
+                    stroke-linecap= "round";
+                />
+                </svg>
+
+                <svg viewbox="-2.5 -5 35 35">
+                        <!-- OUTLINE COLOR -->
+                        <path
+                        d="M4.73,24.68a14.11,14.11,0,1,1,19.85-.1"
+                        fill="none"
+                        stroke="pink";
+                        stroke-width="3";
+                        stroke-dasharray="75, 100";
+                        stroke-linecap= "round"
+                        tra
+                        />
+                        <!-- BACKGROUND COLOR -->
+                        <path
+                        d="M4.73,24.68a14.11,14.11,0,1,1,19.85-.1"
+                        fill="none"
+                        stroke="#45454E";
+                        stroke-width="2.8";
+                        stroke-dasharray="75, 100";
+                        stroke-linecap= "round"
+                        />
+                        <!-- FILL COLOR -->
+                        <path id="wind" class="empty active"
+                        d="M4.73,24.68a14.11,14.11,0,1,1,19.85-.1"
+                        fill="none"
+                        stroke="blue";
+                        stroke-width="2.8";
+                        ng-attr-stroke-dasharray="{{ windFill }}, 100";
+                        stroke-linecap= "round";
+                    />
+                </svg>
+
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 218 218">
+                    <polygon id="wind-direction" class="a" points="141.11 92.85 125.18 92.85 125.18 164.03 92.8 164.03 92.8 92.85 76.89 92.85 109 53.97 141.11 92.85"/>
+                    <circle class="a" cx="109" cy="109" r="106"/>
+                </svg>
+        </div>
     </div>
-<!-- 
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 152 122.97">
-        <defs>
-        </defs>
-        
-        <circle id="gauge-mask" r="45" cx="50%" cy="50%" stroke="#fff" stroke-dasharray="141, 283" fill="#fff">
-            </circle>
-        <path id="progress-bar" stroke-weight="6px" stroke="#000" d="M150.88,71.8A74.73,74.73,0,0,1,140,115.19a14,14,0,0,1-21.74,2.41h0a13.2,13.2,0,0,1-1.69-16.38,47.44,47.44,0,0,0,7.17-26.82,47.72,47.72,0,1,0-88.54,26.28A14.12,14.12,0,0,1,33.2,118h0a13.38,13.38,0,0,1-20.78-2.25A75,75,0,0,1,78.9,1.05C117.29,2.51,148.79,33.43,150.88,71.8Z"/>
-        <path id="progress-bar-fill" mask="url(#gauge-mask)"fill="#FFC107" stroke="none" d="M150.88,71.8A74.73,74.73,0,0,1,140,115.19a14,14,0,0,1-21.74,2.41h0a13.2,13.2,0,0,1-1.69-16.38,47.44,47.44,0,0,0,7.17-26.82,47.72,47.72,0,1,0-88.54,26.28A14.12,14.12,0,0,1,33.2,118h0a13.38,13.38,0,0,1-20.78-2.25A75,75,0,0,1,78.9,1.05C117.29,2.51,148.79,33.43,150.88,71.8Z"/>
-        
-    </svg> -->
-
-</div>
-
-
-
-<div ng-show="weatherResultRaw === undefined">
-        <!-- https://loading.io/# -->
+    <div ng-show="weatherResultRaw === undefined">
+    <!-- https://loading.io/# -->
     <!-- add spinner from that site -->
     <!-- also you can probably add a note that user refreshed -->
-    <img src="../assets/static/loader.gif" />
+        <img src="../assets/static/loader.gif" />
+
+    </div>
+</div>
