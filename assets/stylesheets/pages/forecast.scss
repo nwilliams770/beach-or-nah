@@ -1,33 +1,120 @@
-.a{fill:none;stroke:#fff;stroke-miterlimit:10;stroke-width:6px;}
-
-#wind-direction {
-	transform-origin: center;
-}
-
 #forecast-wrapper {
 	position: relative;
-	width: 100vw;
-	height: 100vh;
+	// width: 100vw;
+	// height: 100vh;
 	min-width: 1360px;
 	min-height: 770px;
 	background-color: #45454E;
 }
-svg {
-    height: 200px;
+
+.container {
+	position: absolute;
+	text-align: center;
+	&.temperature {
+		left: 200px;
+		top: 147.5px;
+	}
+	&.rainfall {
+		left: 550px;
+		top: 283px;
+	}
+	&.humidity {
+		left: 509px;
+		top: 30px;
+	}
+	&.air-pressure {
+		left: 900px;
+		top: 30px;	
+	}
+	&.windspeed {
+		left: 509px;
+		top: 540px;
+	}
+	&.wind-direction {
+		left: 900px;
+		top: 540px;
+	}
+
 }
 
-stop {
-    -webkit-transition: .4s ease;
-    transition: .4s ease;
+#thermometer {
+	height: 400px;
+	.outline {
+		stroke: #feffff;
+		fill: none;
+		stroke-width: 5px;
+	}
+	.fill {
+		fill: #ebf501;
+		stroke: none;
+	}
 }
 
-.mask-rect {
-
-	transition: height 1s cubic-bezier(0.29, 0.02, 0.54, 1.34);
+#rain-meter {
+	height: 200px;
+	.outline {
+		stroke: #feffff;
+		fill: none;
+		stroke-width: 2px;
+	}
+	.fill {
+		fill: #65b5fe;
+		stroke: none;
+	}
 }
 
-#pressure {
-	transition: 1s cubic-bezier(0.29, 0.02, 0.54, 1.34);
+.gauge {
+	height: 180px;
+	.outline {
+		stroke-width: 4px;
+		fill: none;
+		stroke: #feffff;
+		stroke-dasharray: 75, 100;
+		stroke-linecap: round;
+	}
+	.background {
+		fill: none;
+		stroke:#45454E;
+		stroke-width:2.8;
+		stroke-dasharray:75, 100;
+		stroke-linecap: round;
+	}
+	.fill {
+		fill: none;
+		stroke-width: 2.8;
+		stroke-linecap: round;
+		&.windspeed {
+			stroke: #ff3000;
+		}
+		&.humidity {
+			stroke: #0059b3;
+		}
+		&.pressure {
+			stroke: #03d967;
+		}
+	}
+}
+
+.wind-direction-gauge {
+	height: 120px;
+	.circle {
+		fill: none;
+		stroke: #8e909c;
+		stroke-width: 2px;
+	}
+	.wind-direction-reading {
+		transform-origin: center;
+		fill: #ef22c5;
+		stroke: #feffff;
+		stroke-width: 4px;
+		height: 50px;
+	}
+}
+
+
+
+.pressure, .humidity, .windspeed, .thermo, .rain, .wind-direction-reading {
+	transition: all 1s cubic-bezier(0.29, 0.02, 0.54, 1.34);
 }
 .no-height.active {
 	height: 0
@@ -35,28 +122,4 @@ stop {
 
 .empty.active {
 	stroke-dasharray: 0, 100;
-}
-
-// @keyframes fill {
-// 	0% { height: 0; }
-// 	50% { height: 100%; }
-// 	100% { height: 0; }
-// }
-
-
-.milk-bottle {
-	width: 400px;
-	height: 400px;
-}
-
-
-// .mask-rect {
-// 	animation: fill 2s ease-in-out infinite;
-// }
-
-	// animation: fill 2s ease-in-out infinite;
-
-#mask {
-	fill: pink;
-	stroke: none;
 }

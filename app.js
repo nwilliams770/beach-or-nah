@@ -69,7 +69,7 @@ beachOrNah.controller('forecastController', ['$scope', '$resource', '$log', 'pla
 				case "rain":
 
 					if (Object.keys($scope.weatherResultRaw[key]).length > 0) {
-						$scope.rain = $scope.weatherResultRaw[key]["3h"]
+						$scope.rain = round($scope.weatherResultRaw[key]["3h"], 3);
 					}
 					break;
 				case "wind":
@@ -108,31 +108,38 @@ beachOrNah.controller('forecastController', ['$scope', '$resource', '$log', 'pla
 	
 	// 
 	setTimeout(function () {
-		let thermo = $('#thermo');
-		let pressure = $('#pressure');
-		let humidity = $('#humidity');
-		let wind = $('#wind');
-		let windDirection = $('#wind-direction');
+		let thermo = $('.thermo');
+		let rain = $('.rain');
+		let pressure = $('.pressure');
+		let humidity = $('.humidity');
+		let wind = $('.windspeed');
+		let windDirection = $('.wind-direction-reading');
 
 		// windDirection.css({transform: rotateZ($scope.windDirection)});
 		windDirection.css("-webkit-transform", `rotateZ(${$scope.windDirection}deg)`);
+		angular.element(thermo).removeClass("active");
 		angular.element(pressure).removeClass("active");
 		angular.element(humidity).removeClass("active");
 		angular.element(wind).removeClass("active");
-	}, 3000);
+	}, 700);
 	
 
 	
 	
 	// Unit Conversion Functions
 	function convertToFaherenheit(degK) {
-		return Math.round(1.8 * (degK - 273) + 32);
+		return 1.8 * (degK - 273) + 32;
 	}
 	function convertToCelsius(degK) {
-		return Math.round(degk - 273);
+		return degk - 273;
 	}
 	function convertToMph(speedMs) {
-		return Math.round((speedMs * 3600) / 1609.3); 
+		return (speedMs * 3600) / 1609.3; 
+	}
+	
+	function round(value, precision) {
+		var multiplier = Math.pow(10, precision || 1);
+		return Math.round(value * multiplier) / multiplier;
 	}
 	// SVG Display Functions
 	// We want: 
