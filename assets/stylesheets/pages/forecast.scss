@@ -1,8 +1,15 @@
 // ********** TO DO *************
 // FORECAST
-// - Finish styling of gauges
 // - Add key for measurements somewhere in bottom left
+// - Add Date as well
 // - Bottom right -- credit the API used
+// - Style loader
+
+// TEST WITH FT LAUDERDALE CITY
+// - Add ng-show (probably the best way is to determine if there is a chosenPlace:
+			// - if chosenPlace || undefined -- we know user picked a spot we dont have
+			// - if undefined --- still loading
+			// - else we got data and can show it!
 
 // HOME
 // -Style form
@@ -29,8 +36,8 @@
 
 #forecast-wrapper {
 	position: relative;
-	// width: 100vw;
-	// height: 100vh;
+	width: 100vw;
+	height: 100vh;
 	min-width: 1360px;
 	min-height: 770px;
 	background-color: #45454E;
@@ -90,20 +97,45 @@
 			left: 53px;
 			.reading {
 				margin-bottom: 50px;
+				font-size: 32px;
 			}
 		}
 	}
 	&.air-pressure {
 		left: 900px;
 		top: 30px;	
+		.copy {
+			top: 80px;
+			left: 53px;
+			.reading {
+				margin-bottom: 50px;
+				font-size: 32px;
+				span {
+					font-size: 22px;
+					color: #797983;
+				}
+			}
+		}
 	}
 	&.windspeed {
 		left: 509px;
 		top: 540px;
+		.copy {
+			top: 80px;
+			left: 67px;
+			.reading {
+				margin-bottom: 50px;
+				font-size: 32px;
+				span {
+					font-size: 22px;
+					color: #797983;
+				}
+			}
+		}
 	}
 	&.wind-direction {
 		left: 900px;
-		top: 540px;
+		top: 568px;
 	}
 }
 #thermometer {
@@ -180,6 +212,43 @@
 	}
 }
 
+.key.copy {
+	text-align: left;
+	h2 {
+		font-size: 14px
+	}
+	li {
+		list-style: none;
+		font-size: 12px;
+		padding-left: 8px;
+		span {
+			font-size: 14px;
+		}
+	}
+	p {
+		font-size: 10px;
+		a {
+			text-decoration: underline;
+		}
+	}
+}
+
+.error-message.copy {
+	left: 50%;
+    top: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 36px
+}
+
+.loading {
+	img {
+		height: 300px;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
+}
 
 
 .pressure, .humidity, .windspeed, .thermo, .rain, .wind-direction-reading {

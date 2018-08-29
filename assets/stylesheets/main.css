@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Dosis:400,500,600,700,800");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700");
 html, body, header, nav, h1, a,
 ul, li, strong, main, button, i, em,
 section, img, div, h2, p, form, h3, h4, h5 fieldset,
@@ -54,21 +56,224 @@ input[type=submit] {
   clear: both;
 }
 
-svg {
+#forecast-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  min-width: 1360px;
+  min-height: 770px;
+  background-color: #45454E;
+}
+
+.copy {
+  font-family: "Roboto Condensed";
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  color: white;
+  position: absolute;
+}
+
+.container {
+  text-align: center;
+  position: absolute;
+}
+.container.temperature {
+  left: 200px;
+  top: 147.5px;
+}
+.container.temperature .copy {
+  left: 125px;
+  top: 30px;
+  text-align: right;
+}
+.container.temperature .copy .reading {
+  font-size: 60px;
+}
+.container.temperature .copy .reading span {
+  font-size: 32px;
+  color: #797983;
+}
+.container.rainfall {
+  left: 550px;
+  top: 283px;
+}
+.container.rainfall .copy {
+  top: 40px;
+  left: 170px;
+  text-align: right;
+}
+.container.rainfall .copy .reading {
+  font-size: 54px;
+}
+.container.rainfall .copy .reading span {
+  font-size: 38px;
+  color: #797983;
+}
+.container.rainfall .copy .unavailable {
+  font-size: 20px;
+  color: #797983;
+}
+.container.humidity {
+  left: 509px;
+  top: 30px;
+}
+.container.humidity .copy {
+  top: 80px;
+  left: 53px;
+}
+.container.humidity .copy .reading {
+  margin-bottom: 50px;
+  font-size: 32px;
+}
+.container.air-pressure {
+  left: 900px;
+  top: 30px;
+}
+.container.air-pressure .copy {
+  top: 80px;
+  left: 53px;
+}
+.container.air-pressure .copy .reading {
+  margin-bottom: 50px;
+  font-size: 32px;
+}
+.container.air-pressure .copy .reading span {
+  font-size: 22px;
+  color: #797983;
+}
+.container.windspeed {
+  left: 509px;
+  top: 540px;
+}
+.container.windspeed .copy {
+  top: 80px;
+  left: 67px;
+}
+.container.windspeed .copy .reading {
+  margin-bottom: 50px;
+  font-size: 32px;
+}
+.container.windspeed .copy .reading span {
+  font-size: 22px;
+  color: #797983;
+}
+.container.wind-direction {
+  left: 900px;
+  top: 568px;
+}
+
+#thermometer {
+  height: 400px;
+}
+#thermometer .outline {
+  stroke: #feffff;
+  fill: none;
+  stroke-width: 5px;
+}
+#thermometer .fill {
+  fill: #ebf501;
+  stroke: none;
+}
+
+#rain-meter {
   height: 200px;
 }
-
-stop {
-  -webkit-transition: 0.4s ease;
-  transition: 0.4s ease;
+#rain-meter .outline {
+  stroke: #feffff;
+  fill: none;
+  stroke-width: 2px;
+}
+#rain-meter .fill {
+  fill: #65b5fe;
+  stroke: none;
 }
 
-.mask-rect {
-  transition: height 1s cubic-bezier(0.29, 0.02, 0.54, 1.34);
+.gauge {
+  height: 180px;
+}
+.gauge .outline {
+  stroke-width: 4px;
+  fill: none;
+  stroke: #feffff;
+  stroke-dasharray: 75, 100;
+  stroke-linecap: round;
+}
+.gauge .background {
+  fill: none;
+  stroke: #45454E;
+  stroke-width: 2.8;
+  stroke-dasharray: 75, 100;
+  stroke-linecap: round;
+}
+.gauge .fill {
+  fill: none;
+  stroke-width: 2.8;
+  stroke-linecap: round;
+}
+.gauge .fill.windspeed {
+  stroke: #ff3000;
+}
+.gauge .fill.humidity {
+  stroke: #0059b3;
+}
+.gauge .fill.pressure {
+  stroke: #03d967;
 }
 
-#pressure {
-  transition: 1s cubic-bezier(0.29, 0.02, 0.54, 1.34);
+.wind-direction-gauge {
+  height: 120px;
+}
+.wind-direction-gauge .circle {
+  fill: none;
+  stroke: #8e909c;
+  stroke-width: 2px;
+}
+.wind-direction-gauge .wind-direction-reading {
+  transform-origin: center;
+  fill: #ef22c5;
+  stroke: #feffff;
+  stroke-width: 4px;
+  height: 50px;
+}
+
+.key.copy {
+  text-align: left;
+}
+.key.copy h2 {
+  font-size: 14px;
+}
+.key.copy li {
+  list-style: none;
+  font-size: 12px;
+  padding-left: 8px;
+}
+.key.copy li span {
+  font-size: 14px;
+}
+.key.copy p {
+  font-size: 10px;
+}
+.key.copy p a {
+  text-decoration: underline;
+}
+
+.error-message.copy {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 36px;
+}
+
+.loading img {
+  height: 300px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.pressure, .humidity, .windspeed, .thermo, .rain, .wind-direction-reading {
+  transition: all 1s cubic-bezier(0.29, 0.02, 0.54, 1.34);
 }
 
 .no-height.active {
@@ -77,16 +282,6 @@ stop {
 
 .empty.active {
   stroke-dasharray: 0, 100;
-}
-
-.milk-bottle {
-  width: 400px;
-  height: 400px;
-}
-
-#mask {
-  fill: pink;
-  stroke: none;
 }
 
 #home-wrapper {
@@ -218,8 +413,36 @@ stop {
   animation: lightning-strike 7s linear infinite;
 }
 
+#letters {
+  position: absolute;
+  left: 458px;
+  top: 50px;
+}
+#letters .beach {
+  -webkit-animation: enter-left 0.5s ease-in-out 0.75s backwards;
+  -moz-animation: enter-left 0.5s ease-in-out 0.75s backwards;
+  -o-animation: enter-left 0.5s ease-in-out 0.75s backwards;
+  animation: enter-left 0.5s ease-in-out 0.75s backwards;
+}
+#letters .or {
+  -webkit-animation: enter-right 0.5s ease-in-out 1.5s backwards;
+  -moz-animation: enter-right 0.5s ease-in-out 1.5s backwards;
+  -o-animation: enter-right 0.5s ease-in-out 1.5s backwards;
+  animation: enter-right 0.5s ease-in-out 1.5s backwards;
+}
+#letters .nah {
+  -webkit-animation: enter-left 0.5s ease-in-out 2.25s backwards;
+  -moz-animation: enter-left 0.5s ease-in-out 2.25s backwards;
+  -o-animation: enter-left 0.5s ease-in-out 2.25s backwards;
+  animation: enter-left 0.5s ease-in-out 2.25s backwards;
+}
+
 #form {
   position: absolute;
+  top: 400px;
+  left: 500px;
+  font-family: "Dosis", sans-serif;
+  color: white;
 }
 
 @keyframes cloud-move {
@@ -269,6 +492,25 @@ stop {
     -webkit-transform: translateY(0);
   }
 }
-#letters {
-  position: absolute;
+@keyframes enter-right {
+  from {
+    opacity: 0;
+    transform: translate(200px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
 }
+@keyframes enter-left {
+  from {
+    opacity: 0;
+    transform: translate(-200px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+/*# sourceMappingURL=main.css.map */
