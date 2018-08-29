@@ -132,12 +132,24 @@
                 <p>WIND DIRECTION</p>
             </div>
         </section>
+
+        <!-- <section class="key copy">
+            <h2>MEASUREMENT KEY</h2>
+            <li>temperature: <span>F</span></li>
+            <li>rain: <span>MM</span></li>
+            <li>pressure: <span>KPA</span></li>
+            <li>wind speed: <span>MPH</span></li>
+            <p> Powered by <a target="_blank" href="https://www.openweathermap.org">openweathermap</a>
+        </section> -->
     </div>
-    <div ng-show="weatherResultRaw === undefined">
+    <div class="error-message copy" ng-show="error">
+        <h1>Unfortunately, we do not have weather data for your selected location.</h1> 
+    </div>
+    <div class="loading" ng-show="!error && weatherResultRaw === undefined">
     <!-- https://loading.io/# -->
     <!-- add spinner from that site -->
     <!-- also you can probably add a note that user refreshed -->
-        <img src="../assets/static/loader.gif" />
+        <img src="../assets/static/spinner.svg" />
 
     </div>
 </div>
