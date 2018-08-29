@@ -99,9 +99,13 @@ beachOrNah.controller('forecastController', ['$scope', '$resource', '$log', 'pla
 		$scope.pressureFill = pressureFill($scope.pressure)
 		$scope.windFill = windFill($scope.windSpeed)
 		$scope.humidityFill = humidityFill($scope.humidity);
+		$scope.error = false;
+		console.log("ERROR?")
+		console.log($scope.error);
 	}).catch(function(err) {
 		if (err) {
-			console.log(`Error: ${err}`)
+			// console.log(`Error: ${err}`)
+			$scope.error = true;
 			throw err;
 		}
 	});
@@ -175,16 +179,8 @@ beachOrNah.controller('forecastController', ['$scope', '$resource', '$log', 'pla
 
 	function windFill (windMph) {
 		let unadjustedPercentageFill = Math.round((windMph - 2) / 66 * 100);
-		console.log("WIND");
-		console.log(2 * Math.round((unadjustedPercentageFill * 67) / 100));
 		return 2 * Math.round((unadjustedPercentageFill * 67) / 100);
 	}
-	// $scope.temp = $scope.weatherResult.list[0].dt;
-	// console.log("WEATHER!");
-	// $scope.thermoPercentage = $scope.weatherResult
-
-
-
 }]);
 
 // DIRECTIVES
