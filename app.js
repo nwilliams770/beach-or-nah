@@ -1,5 +1,12 @@
 const beachOrNah = angular.module('beachOrNah', ['ngRoute', 'ngResource', 'ngSanitize']);
 
+
+beachOrNah.filter('removeCommas', function() {
+    return function(value) {
+		let rounded = parseInt(value, 10); //convert to int
+		return rounded.toString().replace(",", "");
+    }
+})
 // SANITIZE RESOURCE 
 beachOrNah.config(['$sceDelegateProvider', function($sceDelegateProvider) {
 

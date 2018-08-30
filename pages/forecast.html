@@ -64,7 +64,7 @@
             />
             </svg>
             <div class="copy">
-                <p class="reading">{{ pressure | number: 0 }}<span>{{ (pressure | number: 1).slice(-2) }} </span></p>
+                <p class="reading">{{ pressure | removeCommas }}<span>{{ (pressure | number: 1).slice(-2) }} </span></p>
                 <p>PRESSURE</p>
             </div>
         </section>
