@@ -3,13 +3,6 @@
 // - Add key for measurements somewhere in bottom left
 // - Add Date as well
 // - Bottom right -- credit the API used
-// - Style loader
-
-// TEST WITH FT LAUDERDALE CITY
-// - Add ng-show (probably the best way is to determine if there is a chosenPlace:
-			// - if chosenPlace || undefined -- we know user picked a spot we dont have
-			// - if undefined --- still loading
-			// - else we got data and can show it!
 
 // HOME
 // -Style form
@@ -50,9 +43,27 @@
 	position: absolute;
 }
 
+#go-back {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	#go-back-arrow {
+		height: 30px;
+		fill: #797983;
+		transition: fill 0.1s
+	}
+	&:hover #go-back-arrow {
+		fill: #fff;
+	}
+
+}
+
 .container {
 	text-align: center;
 	position: absolute;
+	&:hover {
+		cursor: default;
+	}
 	&.temperature {
 		left: 200px;
 		top: 147.5px;
