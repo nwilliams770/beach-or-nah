@@ -100,8 +100,6 @@ beachOrNah.controller('forecastController', ['$scope', '$resource', '$log', 'pla
 		$scope.windFill = windFill($scope.windSpeed)
 		$scope.humidityFill = humidityFill($scope.humidity);
 		$scope.error = false;
-		console.log("ERROR?")
-		console.log($scope.error);
 	}).catch(function(err) {
 		if (err) {
 			// console.log(`Error: ${err}`)
@@ -122,6 +120,7 @@ beachOrNah.controller('forecastController', ['$scope', '$resource', '$log', 'pla
 		// windDirection.css({transform: rotateZ($scope.windDirection)});
 		windDirection.css("-webkit-transform", `rotateZ(${$scope.windDirection}deg)`);
 		angular.element(thermo).removeClass("active");
+		angular.element(rain).removeClass("active");
 		angular.element(pressure).removeClass("active");
 		angular.element(humidity).removeClass("active");
 		angular.element(wind).removeClass("active");
@@ -157,9 +156,13 @@ beachOrNah.controller('forecastController', ['$scope', '$resource', '$log', 'pla
 		return Math.round((degF / 122) * 100);
 	}
 
+
+	// 4% is minimum height and 80% max
 	function rainFill (rainfallMM) {
 		if (rainfallMM) {
-			return Math.round((rainfallMM / 203) * 100);
+		// 4% height is when fill becomes visible; adding 4 to compensate
+		// Adding x3.5 to give a more dramatic fill
+			return 3.5 * (Math.round((rainfallMM / 203) * 100) + 4);
 		} else {
 			return 0;
 		}
@@ -167,7 +170,7 @@ beachOrNah.controller('forecastController', ['$scope', '$resource', '$log', 'pla
 
 	// Scale for gauge attributes is from 0 to 67
 	function humidityFill (unadjustedHumidity) {
-		return Math.round(unadjustedHumidity * 67 / 100);
+		return Math.floor(unadjustedHumidity * 67 / 100);
 	}
 
 	// Scale for gauge attributes is from 0 to 67
