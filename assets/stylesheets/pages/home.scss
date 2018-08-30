@@ -1,6 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Dosis:400,500,600,700,800');
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700');
 
+
+.bg-buffer.left {
+    background-color: #FFD482;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    z-index: -1;
+}
+
+.bg-buffer.right {
+    background-color: #C9A56B;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    z-index: -1;
+}
 #home-wrapper {
     position: relative;
     // background: url("/assets/static/bg.svg") no-repeat;
@@ -72,8 +88,6 @@
     flex-grow: 1;
     overflow: hidden;
     position: relative;
-    // fix seamline between bgs
-    transform: translateX(-1px);
     img {
         position: absolute;
     }
@@ -168,10 +182,23 @@
 }
 #form {
     position: absolute;
-    top: 400px;
-    left: 500px;
-    font-family: 'Dosis', sans-serif;
+    left: 50%;
+    top: 425px;
+    transform: translate(-50%, -65%);
     color: white;
+    input {
+        width: 400px;
+        .pac-container {
+            background-color: pink;
+            .pac-item {
+                background-color: pink;
+            }
+        }
+
+    }
+    a {
+        margin-top: 5px;
+    }
 }
 
 @keyframes cloud-move {
