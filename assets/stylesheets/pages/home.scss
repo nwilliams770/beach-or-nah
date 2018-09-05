@@ -159,8 +159,9 @@
 
 #letters {
     position: absolute;
-    left: 458px;
     top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
     .beach {
         -webkit-animation: enter-left 0.5s ease-in-out 0.75s backwards;
         -moz-animation: enter-left 0.5s ease-in-out 0.75s backwards;
@@ -184,20 +185,26 @@
     position: absolute;
     left: 50%;
     top: 425px;
-    transform: translate(-50%, -65%);
+    transform: translateX(-50%);
     color: white;
     input {
-        width: 400px;
-        .pac-container {
-            background-color: pink;
-            .pac-item {
-                background-color: pink;
-            }
-        }
-
+        width: 300px;
+        padding-bottom: 5px;
+        border-bottom: 3px solid white;
     }
-    a {
-        margin-top: 5px;
+}
+
+.btn {
+    position: absolute;
+    margin-top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 480px;
+    border: 1px solid white;
+    padding: 5px 15px;
+    background-color: rgba(255,255,255,0.1);
+    &:hover {
+        background-color: rgba(255,255,255,0.3);
     }
 }
 
