@@ -26,8 +26,9 @@
     </div>
     <div id="form" class="copy">
         <input placeholder="Enter a location to get started..." ng-model="chosenPlace" googleplace/>
-        <div class="btn" ng-show="chosenPlace.length > 0">
-            <a href="#!/forecast">Get Forecast for {{ chosenPlace }} </a>
-        </div>
+    </div>
+    <div class="btn copy" ng-show="chosenPlace.length > 0">
+            <!-- <a href="#!/forecast">Get Forecast for {{ chosenPlace }} </a> -->
+            <a href="#!/forecast">Get Forecast</a>
     </div>
 </div>
