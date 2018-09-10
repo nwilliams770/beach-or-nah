@@ -15,8 +15,6 @@ beachOrNah.directive('googleplace', function () {
 			google.maps.event.addListener(scope.gPlace, 'place_changed', function() {
 				// Explore this part more, why are we using $apply
 
-				let test = scope.gPlace.getPlace();
-
 				scope.$apply(function () {
 					model.$setViewValue(element.val());
 				});
