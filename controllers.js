@@ -62,8 +62,6 @@ beachOrNah.controller('forecastController', ['$scope', '$resource', '$log', 'pla
 			throw err;
 		}
 	});
-	
-	// 
 	setTimeout(function () {
 		let thermo = $('.thermo');
 		let rain = $('.rain');
@@ -81,7 +79,6 @@ beachOrNah.controller('forecastController', ['$scope', '$resource', '$log', 'pla
 		angular.element(wind).removeClass("active");
 	}, 700);
 	
-
 	// Unit Conversion Functions
 	function convertToFaherenheit(degK) {
 		return 1.8 * (degK - 273) + 32;
@@ -108,7 +105,6 @@ beachOrNah.controller('forecastController', ['$scope', '$resource', '$log', 'pla
 	function thermometerFill (degF) {
 		return Math.round((degF / 122) * 100);
 	}
-
 
 	// 4% is minimum height and 80% max
 	function rainFill (rainfallMM) {
