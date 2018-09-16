@@ -19,7 +19,7 @@ beachOrNah.controller('forecastController', ['$scope', '$resource', '$log', 'pla
 	$scope.weatherAPI.get({ q: `${processedPlaceString[0]},${processedPlaceString[2]}`, cnt: 1})
 	.$promise.then(function (result) {
 		$scope.weatherResultRaw = result.list[0];
-        $scope.weatherResultFiltered = []
+        $scope.weatherResultFiltered = [];
 
 		for (key in $scope.weatherResultRaw) {
 			switch (key) {

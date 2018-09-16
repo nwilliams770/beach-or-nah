@@ -4,8 +4,8 @@ beachOrNah.filter('removeCommas', function() {
     return function(value) {
 		let rounded = parseInt(value, 10); //convert to int
 		return rounded.toString().replace(",", "");
-    }
-})
+    };
+});
 
 // SANITIZE RESOURCE 
 beachOrNah.config(['$sceDelegateProvider', function($sceDelegateProvider) {
@@ -14,7 +14,7 @@ beachOrNah.config(['$sceDelegateProvider', function($sceDelegateProvider) {
 	
 	'self',
 	
-	'http://api.openweathermap.org/data/2.5/forecast?APPID=dfb10e52305b309e27a290c220279d28'
+	'https://api.openweathermap.org/data/2.5/forecast?APPID=dfb10e52305b309e27a290c220279d28'
 	
 	]);
 	
@@ -23,4 +23,4 @@ beachOrNah.config(['$sceDelegateProvider', function($sceDelegateProvider) {
 // SERVICES
 beachOrNah.service('placeService', function() {
 	this.place = "";
-})
+});
