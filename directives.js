@@ -1,4 +1,3 @@
-// DIRECTIVES
 beachOrNah.directive('googleplace', function () {
 	return {
 		//binding this 
@@ -13,8 +12,6 @@ beachOrNah.directive('googleplace', function () {
 			scope.gPlace = new google.maps.places.Autocomplete(element[0], options);
 
 			google.maps.event.addListener(scope.gPlace, 'place_changed', function() {
-				// Explore this part more, why are we using $apply
-
 				scope.$apply(function () {
 					model.$setViewValue(element.val());
 				});
