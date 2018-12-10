@@ -100,6 +100,15 @@
         -o-animation: tree-blow 4s cubic-bezier(0.23, 0.62, 0.99, 1.62) infinite;
         animation: tree-blow 4s cubic-bezier(0.23, 0.62, 0.99, 1.62) infinite;
     }
+
+    .cloud-1, .cloud-2, .cloud-3, .cloud-4, .cloud-5 {
+        z-index: 10
+    }
+
+    .lightning-1, .lightning-2, .lightning-3 {
+        z-index: 5
+    }
+    
     .cloud-1 {
         height: 80px;
         top: 30px;
@@ -162,6 +171,7 @@
     top: 50px;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 50;
     .beach {
         -webkit-animation: enter-left 0.5s ease-in-out 0.75s backwards;
         -moz-animation: enter-left 0.5s ease-in-out 0.75s backwards;
