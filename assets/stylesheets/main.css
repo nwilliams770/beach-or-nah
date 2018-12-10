@@ -514,7 +514,10 @@ input[type=submit] {
   top: 50px;
   left: 50%;
   transform: translateX(-50%);
+<<<<<<< HEAD
   z-index: 50;
+=======
+>>>>>>> 74796f719556a7a91b44bca5bd667964982e9e4a
 }
 #letters .beach {
   -webkit-animation: enter-left 0.5s ease-in-out 0.75s backwards;
