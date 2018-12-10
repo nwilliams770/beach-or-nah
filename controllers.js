@@ -1,4 +1,3 @@
-// CONTROLLERS
 beachOrNah.controller('homeController', ['$scope', 'placeService', function($scope, placeService) {
 	$scope.gPlace;
 
@@ -57,7 +56,6 @@ beachOrNah.controller('forecastController', ['$scope', '$resource', '$log', 'pla
 		$scope.error = false;
 	}).catch(function(err) {
 		if (err) {
-			// console.log(`Error: ${err}`)
 			$scope.error = true;
 			throw err;
 		}
