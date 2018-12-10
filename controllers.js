@@ -14,11 +14,11 @@ beachOrNah.controller('forecastController', ['$scope', '$resource', '$log', 'pla
 	// API Call to Open Weather
 	$scope.chosenPlace = placeService.place;
 	let processedPlaceString = $scope.chosenPlace.split(", ");
-	$scope.weatherAPI = $resource("http://api.openweathermap.org/data/2.5/forecast?APPID=dfb10e52305b309e27a290c220279d28", {get: { method: "JSONP"}});
+	$scope.weatherAPI = $resource("https://api.openweathermap.org/data/2.5/forecast?APPID=dfb10e52305b309e27a290c220279d28", {get: { method: "JSONP"}});
 	$scope.weatherAPI.get({ q: `${processedPlaceString[0]},${processedPlaceString[2]}`, cnt: 1})
 	.$promise.then(function (result) {
 		$scope.weatherResultRaw = result.list[0];
-        $scope.weatherResultFiltered = []
+        $scope.weatherResultFiltered = [];
 
 		for (key in $scope.weatherResultRaw) {
 			switch (key) {
@@ -50,8 +50,8 @@ beachOrNah.controller('forecastController', ['$scope', '$resource', '$log', 'pla
 		}	
 		$scope.thermometerFill = thermometerFill($scope.temp);
 		$scope.rainFill = rainFill($scope.rain);
-		$scope.pressureFill = pressureFill($scope.pressure)
-		$scope.windFill = windFill($scope.windSpeed)
+		$scope.pressureFill = pressureFill($scope.pressure);
+		$scope.windFill = windFill($scope.windSpeed);
 		$scope.humidityFill = humidityFill($scope.humidity);
 		$scope.error = false;
 	}).catch(function(err) {
