@@ -16,62 +16,30 @@ beachOrNah.controller('homeController', ['$scope', 'placeService', function($sco
 	
 	    // Set/get cookie
 	    if (processedPlaceString.length > 1) {
-	        $cookies.put("chosenPlace", $scope.chosenPlace)
+		    $cookies.put("chosenPlace", $scope.chosenPlace);
 	    } else {
 	        prevCity = $cookies.get("chosenPlace");
 	        processedPlaceString = prevCity.split(", ");
 	        $scope.chosenPlace = prevCity;
 	    }
-	
+
 	    // API Call to Open Weather
 	    $scope.weatherAPI = $resource("https://api.openweathermap.org/data/2.5/forecast?APPID=dfb10e52305b309e27a290c220279d28", {get: { method: "JSONP"}});
 	    $scope.weatherAPI.get({ q: `${processedPlaceString[0]},${processedPlaceString[2]}`, cnt: 1})
 	    .$promise.then(function (result) {
 	        $scope.weatherResultRaw = result.list[0];
-	        $scope.weatherResultFiltered = [];
-	
-	        for (key in $scope.weatherResultRaw) {
-	            switch (key) {
-	                case "dt":
-	                    $scope.dateUnix = $scope.weatherResultRaw[key];
-	                    break;
-	                case "rain":
-	
-	                    if (Object.keys($scope.weatherResultRaw[key]).length > 0) {
-	                        $scope.rain = round($scope.weatherResultRaw[key]["3h"], 3);
-	                    }
-	                    break;
-	                case "wind":
-	                    if (Object.keys($scope.weatherResultRaw[key]).length > 0) {
-	                        $scope.windSpeed = convertToMph($scope.weatherResultRaw[key].speed);
-	                        $scope.windDirection = $scope.weatherResultRaw[key].deg;
-	                    }
-	                    break;
-	                case "main":
-	                    $scope.temp = convertToFaherenheit($scope.weatherResultRaw[key].temp);
-	                    $scope.tempMin = convertToFaherenheit($scope.weatherResultRaw[key].temp_min);
-	                    $scope.tempMax = convertToFaherenheit($scope.weatherResultRaw[key].temp_max);
-	                    $scope.pressure = $scope.weatherResultRaw[key].pressure;
-	                    $scope.humidity = $scope.weatherResultRaw[key].humidity;
-	                    break;
-	                default:
-	                    break;
-	            }
-	        }   
-	        $scope.thermometerFill = thermometerFill($scope.temp);
-	        $scope.rainFill = rainFill($scope.rain);
-	        $scope.pressureFill = pressureFill($scope.pressure);
-	        $scope.windFill = windFill($scope.windSpeed);
-	        $scope.humidityFill = humidityFill($scope.humidity);
+			processRawData($scope.weatherResultRaw);
+			setFills();
 	        $scope.error = false;
-	
 	    }).catch(function(err) {
 	        if (err) {
 	            $scope.error = true;
 	            throw err;
 	        }
 	    });
-	    setTimeout(function () {
+	    setTimeout(animateFills, 2000);
+
+		function animateFills() {
 	        let thermo = $('.thermo');
 	        let rain = $('.rain');
 	        let pressure = $('.pressure');
@@ -86,7 +54,47 @@ beachOrNah.controller('homeController', ['$scope', 'placeService', function($sco
 	        angular.element(pressure).removeClass("active");
 	        angular.element(humidity).removeClass("active");
 	        angular.element(wind).removeClass("active");
-	    }, 700);
+		}
+
+		function setFills() {
+	        $scope.thermometerFill = thermometerFill($scope.temp);
+	        $scope.rainFill = rainFill($scope.rain);
+	        $scope.pressureFill = pressureFill($scope.pressure);
+	        $scope.windFill = windFill($scope.windSpeed);
+	        $scope.humidityFill = humidityFill($scope.humidity);
+		}
+
+		function processRawData(data) {
+	        $scope.weatherResultFiltered = [];
+
+	        for (key in data) {
+	            switch (key) {
+	                case "dt":
+	                    $scope.dateUnix = data[key];
+	                    break;
+	                case "rain":
+	                    if (Object.keys(data[key]).length > 0) {
+	                        $scope.rain = round(data[key]["3h"], 3);
+	                    }
+	                    break;
+	                case "wind":
+	                    if (Object.keys(data[key]).length > 0) {
+	                        $scope.windSpeed = convertToMph(data[key].speed);
+	                        $scope.windDirection = data[key].deg;
+	                    }
+	                    break;
+	                case "main":
+	                    $scope.temp = convertToFaherenheit(data[key].temp);
+	                    $scope.tempMin = convertToFaherenheit(data[key].temp_min);
+	                    $scope.tempMax = convertToFaherenheit(data[key].temp_max);
+	                    $scope.pressure = data[key].pressure;
+	                    $scope.humidity = data[key].humidity;
+	                    break;
+	                default:
+	                    break;
+	            }
+	        }
+		}
 	    
 	
 	    // Unit Conversion Functions
