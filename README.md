@@ -1,5 +1,6 @@
 # beach-or-nah 🏖🌴🌊
 [Live](https://nwilliams770.github.io/beach-or-nah/)
+
 Beach or Nah? is a dynamic single-page AngularJS application for users to check detailed forecasts using the [openweathermap.org](https://openweathermap.org/) API.
 
 ## Features
