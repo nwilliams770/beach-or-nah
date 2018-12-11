@@ -21,8 +21,6 @@ beachOrNah.controller('forecastController', ['$scope', '$resource', '$log', '$co
 		prevCity = $cookies.get("chosenPlace");
 		processedPlaceString = prevCity.split(", ");
 		$scope.chosenPlace = prevCity;
-		console.log("cookie extracted!");
-		console.log(processedPlaceString);
 	}
 
 	// API Call to Open Weather
