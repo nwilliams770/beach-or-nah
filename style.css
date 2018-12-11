@@ -63,6 +63,7 @@ input[type=submit] {
   min-width: 1000px;
   min-height: 770px;
   background-color: #45454E;
+  overflow: hidden;
 }
 
 .copy {
