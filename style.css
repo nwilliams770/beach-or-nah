@@ -389,7 +389,7 @@ input[type=submit] {
 }
 
 #bg-left {
-  background: url("/assets/static/bg-left.svg") no-repeat;
+  background: url("./assets/static/bg-left.svg") no-repeat;
   min-height: 700px;
   max-width: 622px;
   flex-grow: 1;
@@ -441,7 +441,7 @@ input[type=submit] {
 }
 
 #bg-right {
-  background: url("/assets/static/bg-right.svg") no-repeat;
+  background: url("./assets/static/bg-right.svg") no-repeat;
   min-height: 700px;
   max-width: 622px;
   flex-grow: 1;
