@@ -63,6 +63,7 @@ input[type=submit] {
   min-width: 1000px;
   min-height: 770px;
   background-color: #45454E;
+  overflow: hidden;
 }
 
 .copy {
@@ -346,11 +347,11 @@ input[type=submit] {
 }
 
 .loading img {
-  height: 200px;
-  width: 200px;
+  height: 300px;
   position: absolute;
-  left: 500px;
-  top: 285px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .pressure, .humidity, .windspeed, .thermo, .rain, .wind-direction-reading {
@@ -388,7 +389,7 @@ input[type=submit] {
 }
 
 #bg-left {
-  background: url("./assets/static/bg-left.svg") no-repeat;
+  background: url("/assets/static/bg-left.svg") no-repeat;
   min-height: 700px;
   max-width: 622px;
   flex-grow: 1;
@@ -440,7 +441,7 @@ input[type=submit] {
 }
 
 #bg-right {
-  background: url("./assets/static/bg-right.svg") no-repeat;
+  background: url("/assets/static/bg-right.svg") no-repeat;
   min-height: 700px;
   max-width: 622px;
   flex-grow: 1;
@@ -458,6 +459,12 @@ input[type=submit] {
   -moz-animation: tree-blow 4s cubic-bezier(0.23, 0.62, 0.99, 1.62) infinite;
   -o-animation: tree-blow 4s cubic-bezier(0.23, 0.62, 0.99, 1.62) infinite;
   animation: tree-blow 4s cubic-bezier(0.23, 0.62, 0.99, 1.62) infinite;
+}
+#bg-right .cloud-1, #bg-right .cloud-2, #bg-right .cloud-3, #bg-right .cloud-4, #bg-right .cloud-5 {
+  z-index: 10;
+}
+#bg-right .lightning-1, #bg-right .lightning-2, #bg-right .lightning-3 {
+  z-index: 5;
 }
 #bg-right .cloud-1 {
   height: 80px;
@@ -478,14 +485,6 @@ input[type=submit] {
   height: 32px;
   top: 45px;
 }
-
-#bg-right .cloud-1, #bg-right .cloud-2, #bg-right .cloud-3, #bg-right .cloud-4, #bg-right .cloud-5 {
-  z-index: 10;
-}
-#bg-right .lightning-1, #bg-right .lightning-2, #bg-right .lightning-3 {
-  z-index: 5;
-}
-
 #bg-right .lightning-1 {
   height: 70px;
   top: 40px;
@@ -637,3 +636,5 @@ input[type=submit] {
     transform: translate(0, 0);
   }
 }
+
+/*# sourceMappingURL=main.css.map */
