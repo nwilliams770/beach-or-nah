@@ -2,42 +2,44 @@
 <html lang="en-us" ng-app="beachOrNah">
 
 <head>
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-	<meta charset="UTF-8">
-	<link rel="icon" href="./favicon.ico"  />
-	<title> Beach or Nah?</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="UTF-8">
+    <link rel="icon" href="./favicon.ico"  />
+    <title> Beach or Nah?</title>
 
-	<!-- DEV -->
-	<!-- <script src="//code.angularjs.org/1.7.2/angular.js"></script> -->
+    <!-- DEV -->
+    <!-- <script src="//code.angularjs.org/1.7.2/angular.js"></script> -->
 
-	<!-- PRODUCTION -->
-	<script src="//code.angularjs.org/1.7.2/angular.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- PRODUCTION -->
+    <script src="//code.angularjs.org/1.7.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-	<script src="//code.angularjs.org/1.7.2/angular-route.min.js"></script>
-	<script src="//code.angularjs.org/1.7.2/angular-resource.min.js"></script>
-	<script src="//code.angularjs.org/1.7.2/angular-sanitize.min.js"></script>
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
-	<link rel="stylesheet" type="text/css" media="screen" href="./style.css" />
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8wMGsKzFZqJTZn_vCXUV1o_svmaWb920&libraries=places"></script>
-	<script src="app.js"></script>
-	<script src="routes.js"></script>
-	<script src="directives.js"></script>
-	<script src="controllers.js"></script>
+    <script src="//code.angularjs.org/1.7.2/angular-route.min.js"></script>
+    <script src="//code.angularjs.org/1.7.2/angular-resource.min.js"></script>
+    <script src="//code.angularjs.org/1.7.2/angular-sanitize.min.js"></script>
+    <script src="//code.angularjs.org/1.7.2/angular-cookies.js"></script>
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+    <link rel="stylesheet" type="text/css" media="screen" href="./style.css" />
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8wMGsKzFZqJTZn_vCXUV1o_svmaWb920&libraries=places"></script>
+    <script src="app.js"></script>
+    <script src="routes.js"></script>
+    <script src="directives.js"></script>
+    <script src="controllers.js"></script>
 
 
 </head>
 
 <body>
-	<div id="toolbar">
-		<!-- This is where any toolbar or HTML that will persist multiple pages will live -->
-	</div>
-	<div class="container">
-		<div ng-view></div>
-	</div>
-	<div>
-		<!-- This is where Navbar will live with links to github and all that stuff; could also be better as a footer -->
-	</div>
+    <div id="toolbar">
+        <!-- This is where any toolbar or HTML that will persist multiple pages will live -->
+    </div>
+    <div class="container">
+        <div ng-view></div>
+    </div>
+    <div>
+        <!-- This is where Navbar will live with links to github and all that stuff; could also be better as a footer -->
+    </div>
 
 </body>
 
