@@ -10,15 +10,27 @@ beachOrNah.controller('homeController', ['$scope', 'placeService', function($sco
 }]);
 
 // TODO: If user refreshes, either cache chosen place or send them back to home
-beachOrNah.controller('forecastController', ['$scope', '$resource', '$log', 'placeService', function($scope, $resource, $log, placeService) {
-	// API Call to Open Weather
-	$scope.chosenPlace = placeService.place;
+beachOrNah.controller('forecastController', ['$scope', '$resource', '$log', '$cookies', 'placeService', function($scope, $resource, $log, $cookies, placeService) {
+	$scope.chosenPlace = placeService.place || "";
 	let processedPlaceString = $scope.chosenPlace.split(", ");
+
+	// Set/get cookie
+	if (processedPlaceString.length > 1) {
+		$cookies.put("chosenPlace", $scope.chosenPlace)
+	} else {
+		prevCity = $cookies.get("chosenPlace");
+		processedPlaceString = prevCity.split(", ");
+		$scope.chosenPlace = prevCity;
+		console.log("cookie extracted!");
+		console.log(processedPlaceString);
+	}
+
+	// API Call to Open Weather
 	$scope.weatherAPI = $resource("https://api.openweathermap.org/data/2.5/forecast?APPID=dfb10e52305b309e27a290c220279d28", {get: { method: "JSONP"}});
 	$scope.weatherAPI.get({ q: `${processedPlaceString[0]},${processedPlaceString[2]}`, cnt: 1})
 	.$promise.then(function (result) {
 		$scope.weatherResultRaw = result.list[0];
-        $scope.weatherResultFiltered = [];
+		$scope.weatherResultFiltered = [];
 
 		for (key in $scope.weatherResultRaw) {
 			switch (key) {
@@ -54,6 +66,7 @@ beachOrNah.controller('forecastController', ['$scope', '$resource', '$log', 'pla
 		$scope.windFill = windFill($scope.windSpeed);
 		$scope.humidityFill = humidityFill($scope.humidity);
 		$scope.error = false;
+
 	}).catch(function(err) {
 		if (err) {
 			$scope.error = true;
@@ -77,6 +90,7 @@ beachOrNah.controller('forecastController', ['$scope', '$resource', '$log', 'pla
 		angular.element(wind).removeClass("active");
 	}, 700);
 	
+
 	// Unit Conversion Functions
 	function convertToFaherenheit(degK) {
 		return 1.8 * (degK - 273) + 32;

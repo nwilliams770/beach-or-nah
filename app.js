@@ -1,4 +1,4 @@
-const beachOrNah = angular.module('beachOrNah', ['ngRoute', 'ngResource', 'ngSanitize']);
+const beachOrNah = angular.module('beachOrNah', ['ngRoute', 'ngResource', 'ngSanitize', 'ngCookies']);
 
 beachOrNah.filter('removeCommas', function() {
     return function(value) {
